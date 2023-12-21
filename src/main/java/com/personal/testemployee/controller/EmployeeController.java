@@ -25,8 +25,13 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
 
-    @PutMapping("/employee/update/{employee_id}")
-    public ResponseEntity<String> updateEmployee(@RequestBody Employee employee){
-        return employeeService.updateEmployee(employee);
+    @GetMapping("/employee/{employee_id}")
+    public ResponseEntity<List<Employee>> getEmployeeByID(@RequestParam(name = "employee_id")){
+
     }
+
+//    @PutMapping("/employee/update/{employee_id}")
+//    public ResponseEntity<String> updateEmployee(@RequestBody Employee employee){
+//        return employeeService.updateEmployee(employee);
+//    }
 }

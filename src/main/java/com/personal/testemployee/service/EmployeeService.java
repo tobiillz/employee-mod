@@ -41,6 +41,15 @@ public class EmployeeService {
         return new  ResponseEntity<>("ERROR",HttpStatus.BAD_REQUEST);
     }
 
+    public ResponseEntity<List<Employee>> getEmployeeByEmployeeID(String employee_id) {
+        try {
+            return new ResponseEntity<>(employeeRepository.getEmployeeByEmployeeId(employee_id),HttpStatus.OK);
+        } catch (Exception e){
+             e.printStackTrace();
+        }
+        return new ResponseEntity<>()
+    }
+
 //    public ResponseEntity<String> updateEmployee(){
 //
 //    }

@@ -25,9 +25,9 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
 
-    @GetMapping("/employee/{employee_id}")
-    public ResponseEntity<List<Employee>> getEmployeeByID(@RequestParam(name = "employee_id")){
-
+    @GetMapping("/employee/employee_id/{employee_id}")
+    public ResponseEntity<List<Employee>> getEmployeeByID(@PathVariable String employee_id){
+        return employeeService.getEmployeeByEmployeeID(employee_id);
     }
 
 //    @PutMapping("/employee/update/{employee_id}")

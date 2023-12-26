@@ -10,4 +10,10 @@ import java.util.List;
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 
     List<Employee> getEmployeeByEmployeeId(String employee_id);
+
+    String deleteEmployeeByEmployeeId(String employee_id);
+
+//    String deleteEmployeeByEmployeeID(String employee_id){
+//        return
+//    }
 }

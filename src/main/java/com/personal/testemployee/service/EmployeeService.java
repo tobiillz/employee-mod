@@ -26,8 +26,8 @@ public class EmployeeService {
         }
         catch (Exception e){
             e.printStackTrace();
+            return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity<String> createEmployee(Employee employee){
@@ -37,8 +37,8 @@ public class EmployeeService {
         }
         catch (Exception e){
             e.printStackTrace();
+            return new  ResponseEntity<>("ERROR",HttpStatus.BAD_REQUEST);
         }
-        return new  ResponseEntity<>("ERROR",HttpStatus.BAD_REQUEST);
     }
 
     public ResponseEntity<List<Employee>> getEmployeeByEmployeeID(String employee_id) {
@@ -46,12 +46,25 @@ public class EmployeeService {
             return new ResponseEntity<>(employeeRepository.getEmployeeByEmployeeId(employee_id),HttpStatus.OK);
         } catch (Exception e){
              e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>()
+    }
+    public Employee updateEmployee(Employee employee){
+        return employeeRepository.save(employee);
     }
 
-//    public ResponseEntity<String> updateEmployee(){
-//
-//    }
+    public String deleteEmployee(Integer id) {
+        if (employeeRepository.existsById(id)) {
+            employeeRepository.deleteById(id);
+            return "Employee ID " + id + " Deleted Successfully";
+        }
+        else
+            return "Employee ID " + id + " does not exist!!!";
+    }
+
+    public String deleteEmployeeByEmployeeId(String employeeId) {
+        employeeRepository.deleteEmployeeByEmployeeId(employeeId);
+        return "Employee Deleted Successfully";
+    }
 }
 

@@ -25,13 +25,21 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
 
-    @GetMapping("/employee/employee_id/{employee_id}")
+    @GetMapping("/employee/employeeid/{employee_id}")
     public ResponseEntity<List<Employee>> getEmployeeByID(@PathVariable String employee_id){
         return employeeService.getEmployeeByEmployeeID(employee_id);
     }
+    @PutMapping("/employee/update")
+    public Employee updateEmployee(@RequestBody Employee employee){
+        return employeeService.updateEmployee(employee);
+    }
 
-//    @PutMapping("/employee/update/{employee_id}")
-//    public ResponseEntity<String> updateEmployee(@RequestBody Employee employee){
-//        return employeeService.updateEmployee(employee);
-//    }
+    @DeleteMapping("/employee/remove/id/{Id}")
+    public String deleteEmployee(@PathVariable Integer Id){
+        return employeeService.deleteEmployee(Id);
+    }
+    @DeleteMapping("/employee/remove/employeeid/{employee_id}")
+    public String deleteEmployeeByEmployeeId(@PathVariable String employee_id){
+        return employeeService.deleteEmployeeByEmployeeId(employee_id);
+    }
 }
